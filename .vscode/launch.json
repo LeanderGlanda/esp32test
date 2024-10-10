@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    //"console_log_level": "Debug",
+    //"wire_protocol":"Jtag",
+    "configurations": [
+        {
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe-rs Test",
+            "cwd": "${workspaceFolder}",
+            "connectUnderReset": true,
+            "chip": "esp32c6",
+            "flashingConfig": {
+                "flashingEnabled": true,
+                //"haltAfterReset": true,
+                "formatOptions": {
+                    "binaryFormat": "idf"
+                }
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "./target/riscv32imac-esp-espidf/debug/${workspaceFolderBasename}",
+                    "svdFile": "${workspaceFolder}/esp32c6.svd"
+                }
+            ],
+        },
+        {
+            "type": "probe-rs-debug",
+            "request": "attach",
+            "name": "probe_rs Executable launch example",
+            "cwd": "${workspaceFolder}",
+            "chip": "esp32c6",
+            "coreConfigs": [
+              {
+                "coreIndex": 0,
+                "programBinary": "./target/riscv32imac-esp-espidf/debug/${workspaceFolderBasename}",
+                "svdFile": "${workspaceFolder}/esp32c6.svd"
+              }
+            ],
+            "env": {
+              "RUST_LOG": "info"
+            },
+            // Info, Debug
+            "consoleLogLevel": "Console"
+          }
+    ]
+}
