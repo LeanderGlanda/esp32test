@@ -6,7 +6,8 @@
             "request": "launch",
             "name": "probe-rs Test",
             "cwd": "${workspaceFolder}",
-            "connectUnderReset": true,
+            //"consoleLogLevel": "Debug",
+            //"connectUnderReset": true,
             "chip": "esp32c6",
             "flashingConfig": {
                 "flashingEnabled": true,
